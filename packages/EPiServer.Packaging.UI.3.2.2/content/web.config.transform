@@ -1,0 +1,7 @@
+<configuration>
+    <episerver.shell>
+        <protectedModules>
+            <add name="EPiServer.Packaging.UI" />
+        </protectedModules>
+    </episerver.shell>
+</configuration>

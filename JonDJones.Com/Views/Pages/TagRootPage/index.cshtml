@@ -1,0 +1,43 @@
+﻿@model JonDJones.Com.Core.ViewModel.Pages.TagRootPageViewModel
+@using EPiServer.Web.Mvc.Html
+@using EPiServer
+@using EPiServer.Core
+@using EPiServer.Framework.Localization
+@using EPiServer.ServiceLocation
+
+<header class="intro-header" style="background-image: url('/ClientResources/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>
+                        List Of Tags
+                    </h1>
+                    <hr class="small">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                    @foreach (var tagPage in Model.GetAllTagPages())
+                    {
+                        @Html.PageLink(@tagPage)
+
+                        <hr />
+                    }
+
+                </div>
+
+            </div>
+            <!-- /.row -->
+
+            <hr>
+

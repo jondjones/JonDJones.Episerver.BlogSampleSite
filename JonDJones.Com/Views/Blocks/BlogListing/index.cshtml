@@ -1,0 +1,28 @@
+﻿@model JonDJones.com.Core.ViewModel.Blocks.BlogListingViewModel
+
+@foreach (var blog in Model.GetBlogPages())
+{
+    <div class="post-preview">
+
+        @if (Model.CurrentBlock.DisplayThumbNails)
+        {
+            <div id="listing-image-container" style="background-image:url(@blog.ImageUrl)">
+                <div class="transbox">
+                    <h2 class="post-title">
+                        <a href="@blog.Url">
+                            @blog.Name
+                        </a>
+                    </h2>
+
+                </div>
+            </div>
+
+        }
+        
+         @blog.Summary
+
+        <p class="post-meta">Posted by @blog.Author</p>
+    </div>
+
+    <hr>
+}

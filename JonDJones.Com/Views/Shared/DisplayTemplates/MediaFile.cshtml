@@ -1,0 +1,19 @@
+﻿@using JonDJones.com.Core.Media
+@using EPiServer
+@using EPiServer.ServiceLocation
+@using EPiServer.Web.Mvc.Html
+
+@model EPiServer.Core.ContentReference
+@{
+    var df = ServiceLocator.Current.GetInstance<IContentRepository>();
+    ImageFile image = null;
+    if (Model != null)
+    {
+        image = df.Get<ImageFile>(Model);
+    }
+}
+
+@if (image != null)
+{
+    <img src="@Url.ContentUrl(Model)" alt="@(image.AlternativeText ?? string.Empty)"/>
+}

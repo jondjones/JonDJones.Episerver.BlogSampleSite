@@ -1,0 +1,42 @@
+﻿@model JonDJones.com.Core.ViewModel.Pages.BlogPageViewModel
+
+<header class="intro-header" style="background-image: url('@Model.ImageUrl')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>
+                        @Model.CurrentPage.BlogTitle
+                    </h1>
+                    <h2 class="subheading">
+                        Problems look mighty small from 150 miles up
+                    </h2>
+                    <span class="meta">Posted by @Model.CurrentPage.BlogAuthor on @Model.CurrentPage.Created.ToString("MMMM dd, yyyy")</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                @Model.CurrentPage.BlogPost
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                @foreach (var tag in Model.GetTags())
+                {
+                    <a href="@tag.LinkURL">@tag.TagName</a>
+                }
+            </div>
+        </div>
+</article>
+
+<hr>

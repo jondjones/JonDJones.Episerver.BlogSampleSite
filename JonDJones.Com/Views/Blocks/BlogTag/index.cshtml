@@ -1,0 +1,23 @@
+﻿@model JonDJones.com.Core.ViewModel.Blocks.BlogTagViewModel
+
+<div class="well">
+    <h4>
+        @Model.CurrentBlock.WidgetTitle
+    </h4>
+    <div class="row">
+        <div class="col-lg-6">
+            <ul class="list-unstyled">
+
+                @foreach (var tag in Model.Tags)
+                {
+                    <li>
+                        <a href="@tag.Url">
+                            @tag.Name
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>

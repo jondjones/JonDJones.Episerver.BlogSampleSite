@@ -1,0 +1,50 @@
+﻿@model JonDJones.com.Core.ViewModel.Pages.TagPageViewModel
+
+
+<header class="intro-header" style="background-image: url('/ClientResources/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>
+                        Tag: @Model.CurrentPage.TagName
+                    </h1>
+                    <hr class="small">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                    @foreach (var blog in Model.GetBlogPages())
+                    {
+                        <h2>
+                            <a href="@blog.Url">
+                                @blog.Name
+                            </a>
+                        </h2>
+                        <hr>
+                        @Html.PropertyFor(x => blog.Summary)
+                        <hr>
+                        <p class="lead">
+                            by @blog.Author
+                        </p>
+                        <p><span class="glyphicon glyphicon-time"></span> Posted on @blog.Created</p>
+                        <hr>
+
+                    }
+
+                </div>
+
+            </div>
+            <!-- /.row -->
+
+            <hr>
+
