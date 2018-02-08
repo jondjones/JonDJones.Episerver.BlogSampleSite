@@ -19,12 +19,9 @@ namespace JonDJones.Com.Initialization
 
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-            context.Container.Configure(ConfigureContainer);
 
-            DependencyResolver.SetResolver(new StructureMapDependencyResolver(context.Container));
-            _container = context.Container;
+            context.StructureMap().Configure(ConfigureContainer);
         }
-
         public void Initialize(InitializationEngine context)
         {
         }
@@ -39,12 +36,19 @@ namespace JonDJones.Com.Initialization
 
         private static void ConfigureContainer(ConfigurationExpression container)
         {
+            container.Scan(scan =>
+            {
+                scan.TheCallingAssembly();
+                scan.WithDefaultConventions();
+                scan.Assembly("JonDJones.Com");
+            });
+
             container.For<IEpiServerDependenciesResolver>().Use<EpiServerDependenciesResolver>();
             container.For<IBlockHelper>().Use<BlockHelper>();
             container.For<IContextResolver>().Use<ContextResolver>();
             container.For<ILinkResolver>().Use<LinkResolver>()
                 .Ctor<IEpiServerDependenciesResolver>().Is<EpiServerDependenciesResolver>();
- 
+
             container.For<IEpiServerDependencies>()
                 .Use<EpiServerDependencies>();
         }

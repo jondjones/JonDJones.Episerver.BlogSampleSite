@@ -20,6 +20,7 @@ using EPiServer.Web.Routing.Segments;
 namespace JonDJones.Com.Initialization
 {
     [InitializableModule]
+    [ModuleDependency(typeof(StructureMapSetUp))]
     public class DataInitialization : IInitializableModule
     {
         Injected<IEpiServerDependencies> epiServerDependencies;

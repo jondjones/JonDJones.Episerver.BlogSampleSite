@@ -9,10 +9,22 @@ namespace JonDJones.Com.Initialization
     public class StructureMapDependencyResolver : IDependencyResolver
     {
         readonly IContainer _container;
+        private object container;
+        private Func<IContainer> structureMap;
 
         public StructureMapDependencyResolver(IContainer container)
         {
             _container = container;
+        }
+
+        public StructureMapDependencyResolver(object container)
+        {
+            this.container = container;
+        }
+
+        public StructureMapDependencyResolver(Func<IContainer> structureMap)
+        {
+            this.structureMap = structureMap;
         }
 
         public object GetService(Type serviceType)

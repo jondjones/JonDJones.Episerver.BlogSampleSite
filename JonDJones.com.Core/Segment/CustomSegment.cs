@@ -38,13 +38,12 @@ namespace JonDJones.com.Core.Segment
         {
             if (!IsInDeafultView(requestContext.HttpContext, requestContext.RouteData))
                 return null;
-   
 
-            var contentLink = ContentRoute.GetValue("node", requestContext, values)
-                                as ContentReference;
-
+            var contentLink = RequestContextExtension.GetRouteValue(requestContext, "node", values) as ContentReference;
             if (ContentReference.IsNullOrEmpty(contentLink))
+            {
                 return null;
+            }
 
             var catPage = _dependencies.Service.ContentRepository.Get<IContent>(contentLink) as CategoryPage;
             if (catPage != null)

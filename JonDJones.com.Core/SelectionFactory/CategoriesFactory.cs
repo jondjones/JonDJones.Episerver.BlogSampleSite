@@ -31,7 +31,7 @@ namespace JonDJones.com.Core.SelectionFactory
 
         private CategoryRootPage GetCategoryRootPage()
         {
-            var rootPage = contentRepository.Service.Get<CategoryRootPage>(new ContentReference(40));
+            var rootPage = contentRepository.Service.Get<CategoryRootPage>(new ContentReference(9));
 
             if (rootPage == null)
                 throw new InvalidOperationException();

@@ -12,7 +12,7 @@ namespace JonDJones.Com.Controllers.Base
     {
         private Injected<EpiServerDependencies> epiServerDependencies;
 
-        private Injected<PageRouteHelper> routeHelper;
+        private Injected<IPageRouteHelper> routeHelper;
 
         protected PageData CurrentPage
         {

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <configSections xdt:Transform="InsertBefore(/configuration/*[1])" />
+  <configSections xdt:Locator="XPath(/configuration/configSections[last()])">
+    <section name="episerver.search.indexingservice" type="EPiServer.Search.IndexingService.Configuration.IndexingServiceSection, EPiServer.Search.IndexingService" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)"/>
+  </configSections>
+  <configSections xdt:Transform="RemoveAll" xdt:Locator="Condition(count(*)=0)" />
+  <system.serviceModel xdt:Transform="InsertIfMissing">
+    <bindings xdt:Transform="InsertIfMissing">
+      <webHttpBinding xdt:Transform="InsertIfMissing">
+        <binding name="IndexingServiceCustomBinding" maxBufferPoolSize="1073741824" maxReceivedMessageSize="2147483647"
+             maxBufferSize="2147483647" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)">
+          <readerQuotas maxStringContentLength="10000000" />
+        </binding>
+      </webHttpBinding>
+    </bindings>
+  </system.serviceModel>
+  <episerver.search.indexingservice xdt:Transform="InsertIfMissing">
+    <clients>
+      <add name="local" description="local" allowLocal="true" readonly="false" />
+    </clients>
+    <namedIndexes defaultIndex="default">
+      <indexes>
+        <add name="default" directoryPath="[appDataPath]\Index" readonly="false" />
+      </indexes>
+    </namedIndexes>
+  </episerver.search.indexingservice>
+  <location path="IndexingService/IndexingService.svc"  xdt:Transform="InsertIfMissing" xdt:Locator="Match(path)" >
+    <system.web>
+      <httpRuntime maxQueryStringLength="65536" />
+    </system.web>
+    <system.webServer>
+      <security>
+        <requestFiltering>
+          <requestLimits maxQueryString="65536" />
+        </requestFiltering>
+      </security>
+    </system.webServer>
+  </location>
+</configuration>

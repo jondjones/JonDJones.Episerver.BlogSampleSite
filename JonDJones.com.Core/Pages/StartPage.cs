@@ -83,8 +83,7 @@ namespace JonDJones.Com.Core.Pages
             Name = "CopyRightNotice",
             GroupName = ResourceDefinitions.TabNames.Footer,
             Order = 500)]
-        [Required]
-        public string CopyRightNotice { get; set; }
+        public virtual string CopyRightNotice { get; set; }
         #endregion
 
     }

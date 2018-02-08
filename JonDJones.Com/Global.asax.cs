@@ -1,8 +1,5 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.UI.WebControls;
-using System.Web.Http;
 
 namespace JonDJones.Com
 {
